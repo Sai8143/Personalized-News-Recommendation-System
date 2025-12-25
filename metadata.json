@@ -1,0 +1,7 @@
+{
+  "name": "SmartNews AI",
+  "description": "An AI-powered news platform delivering personalized Indian and global news with integrated fake news detection and an interactive chatbot.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
