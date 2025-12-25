@@ -12,6 +12,7 @@ export interface NewsArticle {
   imageUrl?: string;
   isIndian: boolean;
   credibilityScore: number; // 0-100
+  similarityScore: number; // 0-100 (Match with user interest)
   factCheckStatus?: 'verified' | 'suspicious' | 'debunked' | 'unverified';
 }
 
@@ -19,7 +20,12 @@ export interface UserProfile {
   name: string;
   interests: Category[];
   preferredLanguages: string[];
-  readingHistory: string[]; // Article IDs
+  readingHistory: {
+    id: string;
+    title: string;
+    category: Category;
+    timestamp: number;
+  }[];
   location?: {
     lat: number;
     lng: number;
@@ -27,8 +33,10 @@ export interface UserProfile {
   };
 }
 
-export interface Interaction {
-  articleId: string;
-  type: 'click' | 'share' | 'verify' | 'read';
-  timestamp: number;
+export interface EvaluationMetrics {
+  accuracy: number;
+  ctr: number;
+  diversity: number;
+  novelty: number;
+  filteringAccuracy: number;
 }
